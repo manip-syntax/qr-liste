@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "typeRoots": ["./src/types", "node_modules/@types"],
+    "target": "esnext",
+    "useDefineForClassFields": true,
+    "module": "esnext",
+    "esModuleInterop":true,
+    "lib": ["ESNext", "DOM"],
+    "moduleResolution": "Node",
+    "strict": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "skipLibCheck": true,
+    "allowJs": true
+  },
+  "include": ["src"]
+}
