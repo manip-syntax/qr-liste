@@ -10,11 +10,15 @@
     <video id="qr-video">
     </video>
     <table id="results">
-        <tr class="results-header">
-            <th>Nom</th>
-            <th>Points</th>
-        </tr>
-    <table>
+    </table>
+    <div id="base">
+        <form action="/file-upload"
+          class="dropzone new-names-part"
+          id="dropzone-file"><span class="dz-message">Glisser les fichiers ou cliquez ici</span>
+        </form>
+        <button type="button">Enregistrer les résultats</button>
+    </div>
+
     <script type="module" src="/src/qrreader.ts"></script>
 
 </body>
