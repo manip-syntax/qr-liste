@@ -5,6 +5,8 @@ import { by_id } from "./util";
 import { parse } from 'csv-parse/browser/esm/sync';
 import QrScanner from 'qr-scanner';
 import Dropzone from 'dropzone';
+import {stringify} from 'csv-stringify/browser/esm';
+
 
 const table: HTMLTableElement = by_id("results") as HTMLTableElement;
 
@@ -54,6 +56,10 @@ class TableItem {
     get row(): HTMLTableRowElement {
         return this.html;
     }
+
+    get data(): Array<string|number> {
+        return [this._name, this._points];
+    }
 }
 
 class ResultManager {
@@ -62,6 +68,11 @@ class ResultManager {
     _ascending_order: boolean = true;
 
     constructor() {
+    }
+
+    to_array() {
+        return this._items
+        .map( elt => elt.data);
     }
 
     add(name: string, points: number): TableItem {
@@ -175,6 +186,32 @@ reader.addEventListener("load", (_) => {
   }
 });
 
+by_id("save-results-button").addEventListener("click", () => {
+    stringify( rm.to_array(),
+        {
+            delimiter: ";"
+        },
+        function (err, output) {
+            if (err) {
+                console.log(err);
+                return;
+            }
+            console.log(output);
+            const blob = new Blob([output], {type: "text/csv" });
+            const lk = document.createElement('a');
+            lk.download = (by_id("save-results-input") as HTMLInputElement).value + ".csv";
+            lk.href = window.URL.createObjectURL(blob);
+            lk.dataset.downloadurl = ["text/csv", lk.download, lk.href].join(":");
+            const evt = new MouseEvent('click', {
+                view: window,
+                bubbles: true,
+                cancelable: true
+            });
+            lk.dispatchEvent(evt);
+            lk.remove();
+    });
+});
+
 let rm = new ResultManager();
 
 
@@ -200,4 +237,12 @@ scan.start();
     rm.increment("Nasra Hamdullah");
     rm.increment("Park Jung-un");
     rm.increment("Papadiamantopoulos Mikhail");
+    ["Saadi Lesroses",
+     "Clémence Eaux",
+     "John Tole-Kin",
+     "Cléo Ptolémée",
+     "Erik Lerouge",
+     "Ram De Cesse"
+    ].
+        forEach(e => rm.increment(e));
 }

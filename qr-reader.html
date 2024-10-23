@@ -16,7 +16,11 @@
           class="dropzone new-names-part"
           id="dropzone-file"><span class="dz-message">Glisser les fichiers ou cliquez ici</span>
         </form>
-        <button type="button">Enregistrer les résultats</button>
+        <form>
+            <label for="save-results-input">Entrer le nom du fichier</label>
+            <input type="text" id="save-results-input" name="save-results-input" value="resultats" />
+            <button type="button" id="save-results-button">Enregistrer les résultats</button>
+        </form>
     </div>
 
     <script type="module" src="/src/qrreader.ts"></script>
