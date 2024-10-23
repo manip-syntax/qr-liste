@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="./vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lecteur de QR Code</title>
+    <script type="module" crossorigin src="./assets/qrreader-Bueeowga.js"></script>
+    <link rel="modulepreload" crossorigin href="./assets/style-xM6tksM2.js">
+    <link rel="modulepreload" crossorigin href="./assets/preload-helper-D1USPcvn.js">
+    <link rel="stylesheet" crossorigin href="./assets/style-DvwnH5Wa.css">
+    <link rel="stylesheet" crossorigin href="./assets/preload-helper-BA8sbqqZ.css">
+  </head>
+<body>
+    <video id="qr-video">
+    </video>
+    <table id="results">
+    </table>
+    <div id="base">
+        <form action="/file-upload"
+          class="dropzone new-names-part"
+          id="dropzone-file"><span class="dz-message">Glisser les fichiers ou cliquez ici</span>
+        </form>
+        <form>
+            <label for="save-results-input">Entrer le nom du fichier</label>
+            <input type="text" id="save-results-input" name="save-results-input" value="resultats" />
+            <button type="button" id="save-results-button">Enregistrer les résultats</button>
+        </form>
+    </div>
+
+
+</body>
+</html>

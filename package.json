@@ -11,6 +11,7 @@
   "devDependencies": {
     "@types/dropzone": "^5.7.8",
     "csv": "^6.3.10",
+    "csv-stringify": "^6.5.1",
     "html2pdf.js": "^0.10.2",
     "qr-scanner": "^1.4.2",
     "qrcodejs": "^1.0.0",
