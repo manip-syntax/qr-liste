@@ -137,7 +137,6 @@ input {
 
 }
 #main-page-links a {
-    width: 100%;
     margin: 10px;
     border: 3px solid gray;
     border-radius: 5px;
@@ -195,4 +194,13 @@ input {
 
 td > input {
     width: 95%;
+}
+
+@media only screen and (max-width: 600px) {
+    #main-page-links {
+        flex-direction: column;
+    }
+    #main-page-links a {
+        font-size: 25px;
+    }
 }
