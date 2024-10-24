@@ -25,7 +25,7 @@ Il est également possible de changer manuellement le nombre de points.
 Vous noterez que, par défaut, les noms sont ajoutés au tableau au fur et à mesure. Pour l'ordonner, cliquez sur les flèches '⌃ ⌄' pour les classer par ordre alphabétique ou par nombre de points.
 Si vous le désirez, vous pouvez sauvegarder votre tableau en rentrant un nom de fichier et en cliquant sur le bouton 'Enregistrer les résultats'. Vous pourrez ensuite réutiliser ce fichier en le glissant dans la zone 'Glisser les fichiers ou cliquer ici'.
 
-### Précisions techniques
+# Précisions techniques
 Le scanner scanne 20 images par seconde. Cela signifie que, si on laisse un QR Code face à la caméra une seconde, 20 points seront attribués à la même personne. Pour éviter ce problème, il n'est pas possible de scanner plus d'une fois le même QR Code dans un laps de temps inférieur à 10 secondes. En revanche, vous pouvez toujours changer le nombre de points manuellement et sans limite de temps.
 
 # Suggestions

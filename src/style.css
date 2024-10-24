@@ -134,6 +134,7 @@ input {
 #main-page-links {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
 
 }
 #main-page-links a {
