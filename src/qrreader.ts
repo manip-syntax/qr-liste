@@ -9,6 +9,7 @@ import {stringify} from 'csv-stringify/browser/esm';
 
 
 const table: HTMLTableElement = by_id("results") as HTMLTableElement;
+const min_between_two_scans = 10000; // in milliseconds
 
 class TableItem {
     _name: string;
@@ -19,7 +20,7 @@ class TableItem {
     constructor(name: string, points: number) {
         this._name = name;
         this._points = points;
-        this._last_edit = Date.now();
+        this._last_edit = -min_between_two_scans;
 
         this.html = table.insertRow(-1);
         const name_elt = this.html.insertCell(0);
@@ -28,6 +29,7 @@ class TableItem {
         points_elt.innerHTML = `<input type="number" id="points-${name}" value="${points}" />`;
         const remove_elt = this.html.insertCell(2);
         remove_elt.innerHTML = `<span id="remove-${name}" class="remove-name">x</span>`;
+
         let ti = this;
         by_id(`points-${name}`).addEventListener("input",function (e) { 
             ti._points = parseInt((e.currentTarget as HTMLInputElement).value);
@@ -39,12 +41,13 @@ class TableItem {
     }
 
     increment(): void {
-        if ((this._last_edit - Date.now()) < 10000) {
+        if ((Date.now() - this._last_edit) < min_between_two_scans) {
             // discard this increment if qr code was scanned less than 10s before
             return;
         }
         this._points += 1;
         (by_id(`points-${this._name}`) as HTMLInputElement).value = this._points.toString();
+        this._last_edit = Date.now();
     }
 
     set points(value: number) {
@@ -225,6 +228,10 @@ let rm = new ResultManager();
 const scan = new QrScanner( document.querySelector<HTMLVideoElement>('#qr-video') as HTMLVideoElement,
                            result => {
                                         console.log('decoded: ', result);
+                                        // bugfix
+                                        if (result.data === "") {
+                                            return;
+                                        }
                                         rm.increment(result.data);
                             },
                            {
