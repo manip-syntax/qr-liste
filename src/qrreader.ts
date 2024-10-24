@@ -14,11 +14,13 @@ class TableItem {
     _name: string;
     _points: number;
     html: HTMLTableRowElement;
-    // _last_edit: DateTime;
+    _last_edit: number;
 
     constructor(name: string, points: number) {
         this._name = name;
         this._points = points;
+        this._last_edit = Date.now();
+
         this.html = table.insertRow(-1);
         const name_elt = this.html.insertCell(0);
         name_elt.innerText = name;
@@ -37,6 +39,10 @@ class TableItem {
     }
 
     increment(): void {
+        if ((this._last_edit - Date.now()) < 10000) {
+            // discard this increment if qr code was scanned less than 10s before
+            return;
+        }
         this._points += 1;
         (by_id(`points-${this._name}`) as HTMLInputElement).value = this._points.toString();
     }
@@ -222,7 +228,7 @@ const scan = new QrScanner( document.querySelector<HTMLVideoElement>('#qr-video'
                                         rm.increment(result.data);
                             },
                            {
-                                maxScansPerSecond: 1,
+                                maxScansPerSecond: 20,
                                 highlightScanRegion: true,
                                 highlightCodeOutline: true,
 });
