@@ -126,8 +126,8 @@ export function sort_table(ascending: boolean, name: "names"|"points"){
 }
 
 function caret_table_header(sort: "no"|"names"|"points", name: "names"|"points", ascending: boolean): string {
-    const caret_up = `<span id="header-caret-up-${name}" onclick="sort_table(true, '${name}')">⌃</span>`
-    const caret_down = `<span id="header-caret-down-${name}" onclick="sort_table(false, '${name}')">⌄</span>`
+    const caret_up = `<span id="header-caret-up-${name}" class="caret" onclick="sort_table(true, '${name}')">⌃</span>`
+    const caret_down = `<span id="header-caret-down-${name}" class="caret" onclick="sort_table(false, '${name}')">⌄</span>`
     if (sort === "no" || !(sort === name)) {
         return ` ${caret_up} ${caret_down}`;
     }
@@ -143,6 +143,7 @@ function generate_table_header(sort: "no"|"names"|"points", ascending: boolean) 
     const caret_names = caret_table_header(sort, "names", ascending);
     const caret_points = caret_table_header(sort, "points", ascending);
     header.innerHTML = `<th>Noms${caret_names}</th><th>Points${caret_points}</th><th>Supprimer</th>`;
+    header.className = "header";
     console.log(sort, ascending);
     
 }

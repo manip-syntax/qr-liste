@@ -33,8 +33,8 @@ button {
 }
 button:hover {
   border: 4px solid black;
-  color: white;
   transition: 0.8s;
+  font-weight: bold;
 }
 button:focus,
 button:focus-visible {
@@ -65,12 +65,22 @@ button:focus-visible {
 }
 
 #base {
-    top: 0;
     overflow: hidden;
     margin: 15px;
     border-radius: 15px;
     background-color: #f2f2f2;
     padding: 20px;
+}
+
+#base , #video-table {
+    display: flex;
+    align-content: space-around;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#base > div {
+    margin: 5px;
 }
 
 .qr-remove {
@@ -94,22 +104,16 @@ button:focus-visible {
 }
 
 input {
-  padding: 12px;
+  _padding: 12px;
   border: 1px solid #ccc;
   border-radius: 4px;
   box-sizing: border-box;
-  margin-top: 6px;
-  margin-bottom: 16px;
+  _margin-top: 6px;
+  _margin-bottom: 16px;
   resize: vertical;
+  height: 40px;
 }
 
-#new-names-container {
-    width: 100%;
-}
-.new-names-part {
-    width: 40%;
-    float: left;
-}
 
 .dropzone {
     background-color: white;
@@ -119,33 +123,28 @@ input {
     border: 1px solid black;
     border-radius: 5px;
     padding: 5px;
-    margin-left: 10px;
-    margin-bottom: 20px;
 
 }
-#qr-code-size-container {
-    float: left;
-    margin: 6px;
-}
 #pdf-generator-button {
-    float: left;
-    margin: 6px;
-    padding: 10px;
-    width: 300px;
+    width: 100%;
     height: 55px;
     background-color: gray;
 }
 
+#main-page-links {
+    display: flex;
+    justify-content: center;
+
+}
 #main-page-links a {
-    width: 49%;
-    margin: 1px;
+    width: 100%;
+    margin: 10px;
     border: 3px solid gray;
     border-radius: 5px;
     font-size: 50px;
     text-align: center;
     text-decoration: none;
     display: block;
-    float: left;
     color: black;
 }
 
@@ -153,4 +152,47 @@ input {
     background-color: lightgray;
     color: gray;
     transition: 0.8s;
+}
+
+#qr-video {
+    border: 1px solid black;
+}
+
+#results {
+    border: 1px solid #ddd;
+    margin-top: 5px;
+    font-size: 18px;
+    border-collapse: collapse;
+}
+
+#results th, #results tr {
+    text-align: left;
+}
+
+#results tr {
+    border-bottom: 1px solid #ddd;
+}
+
+#reader-results {
+    margin-top: 15px;
+}
+
+#results tr.header, #results tr:hover {
+    background-color: #f1f1f1;
+}
+
+.caret {
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.remove-name {
+    font-size: 30px;
+    cursor: pointer;
+    text-align: center;
+    display: block;
+}
+
+td > input {
+    width: 95%;
 }

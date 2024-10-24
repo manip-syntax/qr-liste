@@ -5,34 +5,30 @@
     <link rel="icon" type="image/svg+xml" href="./vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>QR-Code generator</title>
-    <script type="module" crossorigin src="./assets/qrgenerator-CWP0DgQI.js"></script>
-    <link rel="modulepreload" crossorigin href="./assets/style-xM6tksM2.js">
+    <script type="module" crossorigin src="./assets/qrgenerator-GcutZYzX.js"></script>
+    <link rel="modulepreload" crossorigin href="./assets/style-DY6YxltW.js">
     <link rel="modulepreload" crossorigin href="./assets/preload-helper-D1USPcvn.js">
-    <link rel="stylesheet" crossorigin href="./assets/style-DvwnH5Wa.css">
+    <link rel="stylesheet" crossorigin href="./assets/style-Ck8OWiVB.css">
     <link rel="stylesheet" crossorigin href="./assets/preload-helper-BA8sbqqZ.css">
   </head>
   <body>
     <div id="base">
         <h1>QR-Code generator</h1>
-        <div id="new-names-container">
-        <form action="/file-upload"
-          class="dropzone new-names-part"
-          id="dropzone-file"><span class="dz-message">Glisser les fichiers ou cliquez ici</span>
-        </form>
-        <div id="new-name-container" class="new-names-part">
-            <label for="qr-code-new-name">Nouveau nom</label>
-            <input type="text" id="qr-code-new-name" name="qr-code-name" placeholder="DUPONT Jean" /> 
-            <button type="button" id="qr-code-new-name-button">OK</button>
-        </div>
+            <form action="/file-upload"
+              class="dropzone new-names-part"
+              id="dropzone-file"><span class="dz-message">Glisser les fichiers ou cliquez ici</span>
+            </form>
+            <div id="new-name-container" class="new-names-part">
+                <label for="qr-code-new-name">Nouveau nom</label>
+                <input type="text" id="qr-code-new-name" name="qr-code-name" placeholder="DUPONT Jean" /> 
+                <button type="button" id="qr-code-new-name-button">OK</button>
+            </div>
+        <div id="qr-code-size-container">
+            <label for="qr-code-size">Taille du QR Code (en pixels)</label>
+            <input type="number" id="qr-code-size" name="qr-code-size" min="1" max="1000" value="400" />
         </div>
         <div>
-            <div id="qr-code-size-container">
-        <label for="qr-code-size">Taille du QR Code (en pixels)</label>
-        <input type="number" id="qr-code-size" name="qr-code-size" min="1" max="1000" value="400" />
-            </div>
-            <div>
-        <button type="button" id="pdf-generator-button">Générer PDF</button>
-            </div>
+            <button type="button" id="pdf-generator-button">Générer PDF</button>
         </div>
     </div>
     <div id="qr-zone">
