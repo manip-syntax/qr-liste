@@ -10,6 +10,11 @@ export default  defineConfig ({
         qrgenerator: resolve(__dirname, 'qr-generator.html'),
         qrreader: resolve(__dirname, 'qr-reader.html')
       },
+      output: {
+        entryFileNames: `assets/[name].js`,
+        chunkFileNames: `assets/[name].js`,
+        assetFileNames: `assets/[name].[ext]`
+      }
     },
   },
   plugins: [
