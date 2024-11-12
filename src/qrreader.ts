@@ -225,6 +225,7 @@ by_id("save-results-button").addEventListener("click", () => {
 let rm = new ResultManager();
 
 
+const notif_sound = new Audio("./bell.mp3");
 const scan = new QrScanner( document.querySelector<HTMLVideoElement>('#qr-video') as HTMLVideoElement,
                            result => {
                                         console.log('decoded: ', result);
@@ -233,6 +234,8 @@ const scan = new QrScanner( document.querySelector<HTMLVideoElement>('#qr-video'
                                             return;
                                         }
                                         rm.increment(result.data);
+                                        notif_sound.play()
+                                            .catch(e => console.log("Error playing bell", e));
                             },
                            {
                                 maxScansPerSecond: 20,
