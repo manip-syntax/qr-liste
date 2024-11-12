@@ -25,6 +25,7 @@ export default  defineConfig ({
     base: "./",
     define: {
         "global": "window"
-    }
+    },
+    assetsInclude: ['public/bell.mp3']
 })
 
